@@ -1,0 +1,1139 @@
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/theme/simple.min.css"
+      id="theme"
+    />
+    <link rel="stylesheet" href="highlight-phpstorm-light-theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Roboto+Mono&family=Roboto:wght@400;700&display=swap"
+    />
+    <style>
+      :root {
+        --r-main-font: 'Roboto', 'Noto Color Emoji', sans-serif;
+        --r-heading-font: 'Roboto', 'Noto Color Emoji', sans-serif;
+        --r-code-font: 'Roboto Mono', 'Noto Color Emoji', monospace;
+        --r-block-margin: 10px;
+      }
+      .reveal pre {
+        font-size: 0.5em;
+      }
+      .nohighlight {
+        padding: 1em !important;
+      }
+      .reveal .hljs {
+        min-height: auto;
+      }
+      td.hljs-ln-code {
+        white-space: pre;
+      }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3,
+      .reveal h4,
+      .reveal h5,
+      .reveal h6,
+      .reveal pre,
+      .reveal p,
+      .reveal img {
+        margin: 0 var(--r-block-margin) calc(var(--r-block-margin) * 2);
+      }
+      .reveal pre {
+        width: auto;
+      }
+
+      .reveal .r-stack > * {
+        margin: 0;
+      }
+      .horizontal {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .horizontal > * {
+        flex-grow: 1;
+      }
+      .horizontal-half > * {
+        flex-grow: 0 !important;
+        width: calc(50% - var(--r-block-margin) * 2) !important;
+      }
+
+      p {
+        font-size: 35px;
+      }
+    </style>
+    <title>Исключения</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Остальные киты ООП</h2>
+        </section>
+
+        <section>
+          <h3>Абстракция</h3>
+          <p>
+            Это выделение общих характеристик объектов, их свойств и методов,
+            при игнорировании деталей реализации. Этот процесс позволяет
+            создавать более простые модели сложных систем, которые содержат
+            только необходимые элементы для решения задачи.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Абстракция позволяет разрабатывать программы на различных языках
+            программирования, скрывая сложность и детали нижележащего кода. Это
+            делается для упрощения сложных систем и концепций, чтобы
+            разработчики могли фокусироваться на основных аспектах проблемы и
+            легче понимали код.
+          </p>
+        </section>
+
+        <section>
+          <p>Преимущества абстракции в ООП</p>
+          <ol>
+            <li>
+              Упрощение сложности: абстракция в программировании позволяет
+              скрыть детали реализации и сосредоточиться на ключевых аспектах
+              системы. Это помогает упростить понимание и поддержку кода.
+            </li>
+            <li>
+              Модульность: возможность разбить систему на модули или классы,
+              которые могут работать независимо друг от друга. Это способствует
+              повторному использованию кода и улучшает масштабируемость проекта.
+            </li>
+            <li>
+              Повышение безопасности: абстракция позволяет скрыть некоторые
+              детали реализации, что делает код более безопасным и защищенным.
+              Внешние компоненты не имеют прямого доступа к внутренним деталям
+              объекта или системы.
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <p>
+            Интерфейс определяет абстрактный дизайн, которому должен
+            соответствовать применяющий его класс. Интерфейс определяет методы
+            без реализации. А класс затем применяет интерфейс и реализует эти
+            методы. Применение интерфейса гарантирует, что класс имеет
+            определенный функционал, описываемый интерфейсом.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Интерфейс определяется с помощью ключевого слова interface, за
+            которым следует имя интерфейса и блок кода интерфейса в фигурных
+            скобках:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Messenger {}
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Причем все эти методы могут быть только публичными, то есть с
+            модификатором public, либо без модификатора доступа (что аналоично
+            модификатору public):
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Messenger
+              {
+                  function send();
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Интерфейсы могут содержать лишь сигнатуры методов - наазвания
+            функций и список параметров в скобках, после которого идет точка с
+            запятой. Так, в данном случае объявлен метод send(). Он не имеет
+            реализации - конкретную реализацию определит класс, который
+            реализует этот интерфейс.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Для реализации классом интерфейса применяется ключевое слово
+            implements, после которого указывается имя применяемого интерфейса:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Messenger
+              {
+                  function send();
+              }
+              class EmailMessenger implements Messenger 
+              {
+                  function send()
+                  {
+                      echo "Отправка сообщения на e-mail";
+                  }
+              }
+              $outlook = new EmailMessenger();
+              $outlook->send();</code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Если класс применяет интерфейс, то он должен реализовать все методы
+            этого интерфейса. Так, в данном случае класс EmailMessenger
+            определяет метод send() с некоторой реализацией
+          </p>
+        </section>
+
+        <section>
+          <p>Интерфейсы также могут наследоваться от других интерфейсов:</p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Messenger
+              {
+                  function send();
+              }
+              interface EmailMessenger extends Messenger
+              {
+                  
+              }
+              class SimpleEmailMessenger implements EmailMessenger 
+              {
+                  function send()
+                  {
+                      echo "Отправка сообщения на email.";
+                  }
+              }
+              $outlook = new SimpleEmailMessenger();
+              $outlook->send();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Когда нам могут понадобиться интерфейсы? Интерфейс - это контракт,
+            который говорит, что класс обязательно реализует определенный
+            функционал. И мы можем использовать это в своей программе. Например:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Messenger
+              {
+                  function send($message);
+              }
+              function sendMessage(Messenger $messenger, $text)
+              {
+                  $messenger->send($text);
+              }
+               
+              class EmailMessenger implements Messenger 
+              {
+                  function send($message)
+                  {
+                      echo "Отправка сообщения на email: $message";
+                  }
+              }
+              $outlook = new EmailMessenger();
+              sendMessage($outlook, "Hello World");
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Класс может одновременно применять сразу несколько интерфейсов. В
+            этом случае все интерфейсы перечисляются через запятую после слова
+            implements. А класс должен реализовать методы всех применяемых
+            интерфейсов:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Camera
+              {
+                  function makeVideo();
+                  function makePhoto();
+              }
+              interface Messenger
+              {
+                  function sendMessage($message);
+              }
+              
+              class Mobile implements Camera, Messenger
+              {
+                  function makeVideo(){ echo "Запись видео";}
+                  function makePhoto(){ echo "Съемка фото";}
+                  function sendMessage($message) {echo "Отправка сообщения $message";}
+              }
+              $iphone12 = new Mobile();
+              $iphone12->makePhoto(); 
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            В общих чертах, интерфейсы — описание того, что ваш класс должен
+            делать. Их можно использовать для гарантии, что любой класс
+            реализующий интерфейс, будет включать каждый публичный метод
+            определённый в интерфейсе.
+          </p>
+        </section>
+
+        <section>
+          <p>Интерфейсы должны:</p>
+          <ul>
+            <li>Использоваться для определения публичных методов класса</li>
+            <li>Использоваться для определения констант класса</li>
+          </ul>
+          <p>Интерфейсы не должны:</p>
+          <ul>
+            <li>Использоваться сами по себе</li>
+            <li>
+              Использоваться для определения приватных или защищённых методов
+              класса
+            </li>
+            <li>Использоваться для определения свойств класса</li>
+          </ul>
+        </section>
+
+        <section>
+          <p>Ещё пример использования интерфейсов</p>
+        </section>
+
+        <section>
+          <p>
+            Сначала напишем не правильно. Для иллюстрации этого, давайте
+            рассмотрим следующий класс:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class BlogReport
+              {
+                  public function getName(): string
+                  {
+                      return 'Blog report';
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p>
+            Давайте посмотрим, как мы могли бы вызвать этот метод в другом
+            классе
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class ReportDownloadService
+              {
+                  public function downloadPDF(BlogReport $report)
+                  {
+                      $name = $report->getName();
+
+                      // Download the file here...
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Хотя код работает, давайте представим, что мы хотим добавить
+            функциональность для загрузки пользовательского отчёта из класса
+            UserReport
+          </p>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class ReportDownloadService
+              {
+                  public function downloadBlogReportPDF(BlogReport $report)
+                  {
+                      $name = $report->getName();
+
+                      // Download the file here...
+                  }
+
+                  public function downloadUsersReportPDF(UsersReport $report)
+                  {
+                      $name = $report->getName();
+
+                      // Download the file here...
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Хотя вы этого не видите, давайте предположим, что остальные методы в
+            приведённом классе используют идентичный код для создания загрузки.
+            Мы могли бы превратить их общий код в методы, но, вероятно, у нас
+            всё равно будет какой-то общий код. Кроме того, у нас будет
+            несколько точек входа в класс, выполняющий почти идентичный код. Это
+            потенциально может привести к дополнительной работе в будущем при
+            попытке расширить код или добавить тесты
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Представим, что мы создаём новый AnalyticsReport; нам нужно добавить
+            в класс новый метод downloadAnalyticsReportPDF(). Как вы видите этот
+            файл может начать быстро расти. Это может быть идеальным местом для
+            использования интерфейсов.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Давайте создадим один; назовём его DownloadableReport и определим
+            так
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface DownloadableReport
+              {
+                  public function getName(): string;
+              
+                  public function getHeaders(): array;
+              
+                  public function getData(): array;
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Теперь мы можем обновить BlogReport и UsersReport для реализации
+            интерфейса DownloadableReport
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class BlogReport implements DownloadableReport
+              {
+                  public function getName(): string
+                  {
+                      return 'Blog report';
+                  }
+
+                  public function getHeaders(): array
+                  {
+                      return ['The headers go here'];
+                  }
+
+                  public function getData(): array
+                  {
+                      return ['The data for the report is here.'];
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class UsersReport implements DownloadableReport
+              {
+                public function getName(): string
+                {
+                    return 'Users Report';
+                }
+            
+                public function getHeaders(): array
+                {
+                   return [];
+                }
+            
+                public function getData(): array
+                {
+                    return ['The data for the report is here.'];
+                }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Теперь, когда оба класса отчётов реализуют один и тот же интерфейс,
+            мы можем обновить ReportDownloadService следующим образом:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class ReportDownloadService
+              {
+                  public function downloadReportPDF(DownloadableReport $report)
+                  {
+                      $name = $report->getName();
+
+                      // Download the file here...
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Теперь мы можем передать объект UsersReport или BlogReport в метод
+            downloadReportPDF() без каких либо ошибок. Потому что мы знаем, что
+            необходимые методы нужные для классов отчёта существуют и возвращают
+            данные ожидаемого типа.
+          </p>
+          <p>
+            В результате передачи интерфейса методу, а не классу, позволило нам
+            слабо связать ReportDownloadService и классы отчётов в зависимости
+            от того, что делают методы, а не от того, как они это делают.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Абстрактный класс представляет частичную реализацию для
+            классов-наследников.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Абстрактный класс определяется с помощью модификатора abstract,
+            который ставится перед именем класса:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              abstract class Messenger { }       
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Одной из ключевых особенностей абстрактных классов является то, что
+            мы не можем напрямую создать объекты абстрактного класса с помощью
+            вызова его конструктора:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              abstract class Messenger { }
+              $telegram = new Messenger();    // эта строка не будет работать
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Абстрактные классы, как и обычные классы, могут определять
+            переменные и константы, методы и конструкторы. Но другой
+            особенностью абстрактных классов является то, что они могут
+            содержать абстрактные методы. Это методы, которые не имеют
+            реализации. Реализацию для них предоставляют классы-наследники.
+            Например:
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              abstract class Messenger
+              {
+                  abstract function send($message);   // абстрактный метод
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            При определении абстрактного метода перед словом function ставится
+            модификатор abstract. А после списка параметров метода - точка с
+            запятой. Абстрактные методы могут размещаться только в абстрактных
+            классах. Обычный неабстрактный класс не может иметь абстрактных
+            методов.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Если неабстрактный класс наследуется от абстрактного класса, то он
+            обязан реализовать все его абстрактные методы. Для наследования
+            классом абстрактного класса, как и в общем случае при наследовании,
+            применяется ключевое слово extends. Например:
+          </p>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              abstract class Messenger
+{
+    protected $name;
+    function __construct($name)
+    { 
+        $this->name = $name;
+    }
+    abstract function send($message);
+    function close()
+    {
+        echo "Выход из мессенджера...";
+    }
+}
+ 
+class EmailMessenger extends Messenger 
+{
+    function send($message)
+    {
+        echo "$this->name отправляет сообщение: $message<br>";
+    }
+}
+$outlook = new EmailMessenger("Outlook");
+$outlook->send("Hello PHP 8");
+$outlook -> close();
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Полиморфизм</h3>
+        </section>
+
+        <section>
+          <p>
+            Полиморфизм (polymorphism) — это понятие из
+            объектно-ориентированного программирования, которое позволяет разным
+            сущностям выполнять одни и те же действия. При этом неважно, как эти
+            сущности устроены внутри и чем они различаются.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Например, есть две разных сущности: картинка и видео. И тем, и
+            другим можно поделиться: отправить в личное сообщение другому
+            человеку. Программист может сделать два разных метода — один для
+            картинки, другой для видео. А может воспользоваться полиморфизмом и
+            создать один метод «Отправить» для обеих сущностей. Такой метод
+            будет называться полиморфным. Плюс этого подхода — разработчик пишет
+            меньше кода и не повторяется. Это наш пример с ReportDownloadService
+          </p>
+        </section>
+
+        <section>
+          <p>Для чего нужен полиморфизм</p>
+          <ol style="font-size: 30px">
+            <li>
+              Не нужно придумывать десять разных методов: отправить одно,
+              другое, третье. Есть один метод, который можно применять к разным
+              сущностям и не задумываться.
+            </li>
+            <li>
+              Если понадобится отправлять не только видео и картинки, но и
+              текст, это можно будет сделать той же командой.
+            </li>
+            <li>
+              Разработчику не нужно разбираться, что делает десяток методов с
+              похожими названиями. Есть один метод, и по его названию все
+              понятно.
+            </li>
+            <li>
+              Помогает точно понимать, чего ждать от разных методов, то есть
+              делает код более предсказуемым. Не может быть такого, что метод
+              «Отправить» вдруг окажется методом не для картинки, а для видео.
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <p>Существуют разные виды полиморфизма.</p>
+          <p>
+            Полиморфизм подтипов. Это полиморфность «по умолчанию»: когда в ООП
+            говорят о полиморфизме, обычно имеют в виду его. Выше мы
+            рассказывали именно про такой тип. Это возможность использовать одни
+            и те же команды, или интерфейсы, для разных сущностей — подтипов.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Параметрический полиморфизм. Его еще называют обобщенным
+            полиморфизмом. В нем для команды не имеет значения, какую сущность
+            ей прислали: для всех возможных классов будет использоваться один
+            код. Такой полиморфизм считается «истинным» и делает код
+            универсальнее, но реализовать его сложнее.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Полиморфизм ad hoc. Этот вид полиморфизма еще называют
+            специализированным. Его иногда противопоставляют параметрическому:
+            идея ad hoc — разный код при одинаковом названии. Часто такой
+            полиморфизм реализуют с помощью перегрузки методов: несколько раз
+            пишут метод с одним и тем же названием, но разным кодом.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            На более «глубоком», близком к машине уровне полиморфизм можно
+            разделить на две группы — статический и динамический. Разница —в
+            том, когда программа переходит от общего метода к одной из его
+            вариаций.
+          </p>
+          <p>Статический — метод переопределяют при компиляции.</p>
+          <p>Динамический — при выполнении программы.</p>
+        </section>
+
+        <section>
+          <p>
+            Статический полиморфизм реализуют с помощью перегрузки методов, о
+            которой мы рассказывали выше. Динамический — с помощью абстракций.
+            Обычно в объектно-ориентированных языках есть возможность применить
+            оба варианта.
+          </p>
+        </section>
+
+        <section>
+          <p>Пример полиморфизма в php</p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface Shape {
+                public function area();
+            }
+            
+            class Circle implements Shape {
+                private $radius;
+            
+                public function __construct($radius) {
+                    $this->radius = $radius;
+                }
+            
+                public function area() {
+                    return pi() * $this->radius * $this->radius;
+                }
+            }
+            
+            class Rectangle implements Shape {
+                private $width;
+                private $height;
+            
+                public function __construct($width, $height) {
+                    $this->width = $width;
+                    $this->height = $height;
+                }
+            
+                public function area() {
+                    return $this->width * $this->height;
+                }
+            }
+            
+            $shapes = [
+                new Circle(5),
+                new Rectangle(4, 6)
+            ];
+            
+            foreach ($shapes as $shape) {
+                echo $shape->area() . "\n";
+            }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            В этом примере классы Circle и Rectangle реализуют интерфейс Shape,
+            что позволяет использовать их взаимозаменяемо. Это означает, что мы
+            можем создать массив объектов Shape и вызывать метод area для
+            каждого объекта, не зная, какой конкретный класс он представляет.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Из примера ранее мы могли узнать что в php используется полиморфизм
+            подтипов. Полиморфизм подтипов (или подлежащий) — это когда разные
+            классы реализуют один и тот же интерфейс или наследуют абстрактный
+            класс, предоставляя свои собственные реализации методов. Это
+            позволяет использовать объекты разных классов взаимозаменяемо.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Полиморфизм на основе перегрузки (в более широком смысле) — в PHP он
+            не так очевиден, как в некоторых других языках (например, в Java или
+            C++), поскольку PHP не поддерживает перегрузку методов. Однако он
+            может быть достигнут через использование переменного количества
+            аргументов или динамических свойств.
+          </p>
+        </section>
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+          class MathOperations 
+          {
+              public function sum(...$numbers): int
+              {
+                  return array_sum($numbers);
+              }
+          }
+          
+          $math = new MathOperations();
+          
+          echo $math->sum(1, 2); // 3
+          echo $math->sum(1, 2, 3, 4, 5); // 15
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            В этом примере метод sum принимает любое количество аргументов и
+            суммирует их, используя встроенную функцию array_sum(). Это
+            позволяет вызывать метод с различным числом аргументов, что также-
+            иллюстрирует полиморфизм в контексте PHP
+          </p>
+        </section>
+        <section>
+          <p></p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+public class MathOperations
+{
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    public double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    public int Add(int a, int b, int c)
+    {
+        return a + b + c;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MathOperations math = new MathOperations();
+
+        Console.WriteLine(math.Add(2, 3));          // 5
+        Console.WriteLine(math.Add(2.5, 3.5));      // 6.0
+        Console.WriteLine(math.Add(1, 2, 3));       // 6
+    }
+}
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Ковариантность и контравариантность</h3>
+        </section>
+
+        <section>
+          <p>
+            В PHP 7.2.0 была добавлена частичная контравариантность путём
+            устранения ограничений типа для параметров в дочернем методе.
+            Начиная с PHP 7.4.0, добавлена полная поддержка ковариантности и
+            контравариантности.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Ковариантность позволяет дочернему методу возвращать более
+            конкретный тип, чем тип возвращаемого значения его родительского
+            метода. В то время как контравариантность позволяет типу параметра в
+            дочернем методе быть менее специфичным, чем в родительском.
+          </p>
+        </section>
+
+        <section>
+          <p>Объявление типа считается более конкретным в следующем случае:</p>
+          <ul>
+            <li>Удалено объединение типов</li>
+            <li>Добавлено пересечение типов</li>
+            <li>Тип класса изменяется на тип дочернего класса</li>
+            <li>iterable изменён на массив (array) или Traversable</li>
+          </ul>
+          <p>В противном случае класс типа считается менее конкретным.</p>
+        </section>
+        <section>
+          <p>Ковариантность</p>
+          <p>
+            Чтобы проиллюстрировать, как работает ковариантность, создадим
+            простой абстрактный родительский класс Animal. Animal будет расширен
+            за счёт дочерних классов Cat и Dog.
+          </p>
+        </section>
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              abstract class Animal
+              {
+                  protected string $name;
+              
+                  public function __construct(string $name)
+                  {
+                      $this->name = $name;
+                  }
+              
+                  abstract public function speak();
+              }
+              
+              class Dog extends Animal
+              {
+                  public function speak()
+                  {
+                      echo $this->name . " лает";
+                  }
+              }
+              
+              class Cat extends Animal
+              {
+                  public function speak()
+                  {
+                      echo $this->name . " мяукает";
+                  }
+              }
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              interface AnimalShelter
+{
+    public function adopt(string $name): Animal;
+}
+
+class CatShelter implements AnimalShelter
+{
+    public function adopt(string $name): Cat // Возвращаем класс Cat вместо Animal
+    {
+        return new Cat($name);
+    }
+}
+
+class DogShelter implements AnimalShelter
+{
+    public function adopt(string $name): Dog // Возвращаем класс Dog вместо Animal
+    {
+        return new Dog($name);
+    }
+}
+
+$kitty = (new CatShelter)->adopt("Рыжик");
+$kitty->speak();
+echo "\n";
+
+$doggy = (new DogShelter)->adopt("Бобик");
+$doggy->speak();
+            </code>
+          </pre>
+        </section>
+        <section>
+          <p>Контравариантность</p>
+          <p>
+            В продолжение предыдущего примера, где мы использовали классы
+            Animal, Cat и Dog, мы введём новые классы Food и AnimalFood и
+            добавим в абстрактный класс Animal новый метод eat(AnimalFood
+            $food).
+          </p>
+        </section>
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class Food {}
+
+class AnimalFood extends Food {}
+
+abstract class Animal
+{
+    protected string $name;
+
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function eat(AnimalFood $food)
+    {
+        echo $this->name . " ест " . get_class($food);
+    }
+}
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class Dog extends Animal
+{
+    public function eat(Food $food) {
+        echo $this->name . " ест " . get_class($food);
+    }
+}
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              $kitty = (new CatShelter)->adopt("Рыжик");
+$catFood = new AnimalFood();
+$kitty->eat($catFood);
+echo "\n";
+
+$doggy = (new DogShelter)->adopt("Бобик");
+$banana = new Food();
+$doggy->eat($banana);
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <h3>Инкапсуляция</h3>
+        </section>
+
+        <section>
+          <p>
+            Инкапсуляция — это один из основных принципов
+            объектно-ориентированного программирования (ООП), который
+            подразумевает скрытие внутренней реализации объекта и предоставление
+            доступа к его данным и методам только через публичные интерфейсы.
+          </p>
+        </section>
+
+        <section>
+          <p>Основные аспекты инкапсуляции</p>
+          <p>
+            Скрытие данных: Поля класса обычно объявляются как private или
+            protected, что защищает их от прямого доступа извне. Это
+            предотвращает случайное или некорректное изменение состояния
+            объекта.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Публичные методы: Для взаимодействия с данными используются методы
+            класса (геттеры и сеттеры), которые позволяют контролировать доступ
+            и модификацию
+          </p>
+          <pre>
+            <code class="language-php" data-trim data-line-numbers="">
+              class BankAccount 
+              {
+                private float $balance;
+            
+                public function __construct(float $initialBalance) {
+                    $this->balance = $initialBalance;
+                }
+            
+                public function getBalance(): float {
+                    return $this->balance;
+                }
+            
+                public function deposit(float $amount): void {
+                    if ($amount > 0) {
+                        $this->balance += $amount;
+                    }
+                }
+            
+                public function withdraw(float $amount): void {
+                    if ($amount > 0 && $amount <= $this->balance) {
+                        $this->balance -= $amount;
+                    }
+                }
+            }
+            
+            // Использование класса
+            $account = new BankAccount(100.00);
+            $account->deposit(50.00);
+            $account->withdraw(30.00);
+            
+            echo "Current balance: " . $account->getBalance(); // Current balance: 120
+            
+            </code>
+          </pre>
+        </section>
+
+        <section>
+          <p>
+            Контроль доступа: Инкапсуляция позволяет определить, какие методы и
+            поля доступны для других объектов, а какие — нет, что способствует
+            лучшей организации и управлению кодом.
+          </p>
+        </section>
+
+        <section>
+          <h3>Разница между сокрытием данных и инкапсуляции</h3>
+          <ol>
+            <li>
+              Сокрытие данных — это аспект инкапсуляции, который фокусируется на
+              защите данных.
+            </li>
+            <li>
+              Инкапсуляция — это более обширное понятие, которое включает как
+              сокрытие данных, так и организацию кода, позволяя пользователям
+              взаимодействовать с объектом через четко определенные интерфейсы.
+            </li>
+          </ol>
+        </section>
+
+        <section>
+          <p>
+            Таким образом, инкапсуляция способствует созданию более надежного и
+            поддерживаемого кода, обеспечивая четкое разделение интерфейса и
+            реализации.
+          </p>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.0.4/plugin/highlight/highlight.min.js"></script>
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        plugins: [RevealHighlight],
+        slideNumber: true,
+        autoAnimate: true,
+      });
+    </script>
+  </body>
+</html>
