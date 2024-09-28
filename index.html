@@ -933,32 +933,32 @@ class Program
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
               interface AnimalShelter
-{
-    public function adopt(string $name): Animal;
-}
+              {
+                  public function adopt(string $name): Animal;
+              }
 
-class CatShelter implements AnimalShelter
-{
-    public function adopt(string $name): Cat // Возвращаем класс Cat вместо Animal
-    {
-        return new Cat($name);
-    }
-}
+              class CatShelter implements AnimalShelter
+              {
+                  public function adopt(string $name): Cat // Возвращаем класс Cat вместо Animal
+                  {
+                      return new Cat($name);
+                  }
+              }
 
-class DogShelter implements AnimalShelter
-{
-    public function adopt(string $name): Dog // Возвращаем класс Dog вместо Animal
-    {
-        return new Dog($name);
-    }
-}
+              class DogShelter implements AnimalShelter
+              {
+                  public function adopt(string $name): Dog // Возвращаем класс Dog вместо Animal
+                  {
+                      return new Dog($name);
+                  }
+              }
 
-$kitty = (new CatShelter)->adopt("Рыжик");
-$kitty->speak();
-echo "\n";
+              $kitty = (new CatShelter)->adopt("Рыжик");
+              $kitty->speak();
+              echo "\n";
 
-$doggy = (new DogShelter)->adopt("Бобик");
-$doggy->speak();
+              $doggy = (new DogShelter)->adopt("Бобик");
+              $doggy->speak();
             </code>
           </pre>
         </section>
@@ -976,22 +976,22 @@ $doggy->speak();
             <code class="language-php" data-trim data-line-numbers="">
               class Food {}
 
-class AnimalFood extends Food {}
+              class AnimalFood extends Food {}
 
-abstract class Animal
-{
-    protected string $name;
+              abstract class Animal
+              {
+                  protected string $name;
 
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
+                  public function __construct(string $name)
+                  {
+                      $this->name = $name;
+                  }
 
-    public function eat(AnimalFood $food)
-    {
-        echo $this->name . " ест " . get_class($food);
-    }
-}
+                  public function eat(AnimalFood $food)
+                  {
+                      echo $this->name . " ест " . get_class($food);
+                  }
+              }
             </code>
           </pre>
         </section>
@@ -1000,11 +1000,11 @@ abstract class Animal
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
               class Dog extends Animal
-{
-    public function eat(Food $food) {
-        echo $this->name . " ест " . get_class($food);
-    }
-}
+              {
+                  public function eat(Food $food) {
+                      echo $this->name . " ест " . get_class($food);
+                  }
+              }
             </code>
           </pre>
         </section>
@@ -1013,13 +1013,13 @@ abstract class Animal
           <pre>
             <code class="language-php" data-trim data-line-numbers="">
               $kitty = (new CatShelter)->adopt("Рыжик");
-$catFood = new AnimalFood();
-$kitty->eat($catFood);
-echo "\n";
+              $catFood = new AnimalFood();
+              $kitty->eat($catFood);
+              echo "\n";
 
-$doggy = (new DogShelter)->adopt("Бобик");
-$banana = new Food();
-$doggy->eat($banana);
+              $doggy = (new DogShelter)->adopt("Бобик");
+              $banana = new Food();
+              $doggy->eat($banana);
             </code>
           </pre>
         </section>
